@@ -1,0 +1,11 @@
+
+[user]
+	name = Rhodri Pugh
+	email = rod@pu-gh.com
+
+[color]
+	ui = true
+
+[alias]
+    tags-full = for-each-ref --format '%(refname) %09 %(taggerdate) %(subject)' refs/tags  --sort=taggerdate
+
