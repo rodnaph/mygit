@@ -1,11 +1,31 @@
 
 [user]
+
     name = Rhodri Pugh
     email = rod@pu-gh.com
 
 [color]
+
     ui = true
 
 [alias]
-    tags-full = for-each-ref --format '%(refname) %09 %(taggerdate) %(subject)' refs/tags  --sort=taggerdate
+
+    # show tags with date and message info
+    tf = for-each-ref --format '%(refname) %09 %(taggerdate) %(subject)' refs/tags  --sort=taggerdate
+
+    # pretty printed logs
+    ls = log --pretty=format:'%Cred%h %Creset%s %Cblue(%an <%ae>)%Creset' -n 15
+    ll = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cblue(%an)%Creset' --decorate --numstat
+
+    # what has changed since yesterday
+    standup = log --since yesterday --oneline --author ADD_EMAIL_HERE
+
+    # have i actually achived anything today?
+    today = log --since today --oneline --author ADD_EMAIL_HERE
+
+    # search logs for commit ticket number e.g. git find #1234
+    find = "!f() { git log --oneline | grep \"$@\"; }; f"
+
+    # fixup an arbitrary previous commit
+    fixup = !sh -c 'git commit --fixup=$1 && git rebase -i --autosquash $1^' -
 
